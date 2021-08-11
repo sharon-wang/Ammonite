@@ -60,9 +60,9 @@ object Sample{
            args: Map[String, String] = Map.empty): String = cached(("exec", command, input, args)){
 
     println("====================EXECUTING====================")
-    println(command)
-    println(input)
-    println(args)
+    println("command: " + command)
+    println("input: " + input)
+    println("args:" + args)
 
     try {
       val p = os.proc(command)
@@ -86,13 +86,15 @@ object Sample{
         Seq("bash", "-i"),
         s"PS1=$customPrompt\n${bashCode.trim}\nexit\n"
       )
-      for(chunk <- output.split("\n" + customPrompt, -1).drop(1).dropRight(1)) yield{
+      for (chunk <- output.split("\n")) yield{
         Seq[Frag](span(color := ANSI.magenta, "\nbash$ "), chunk)
       }
     }
 
     div(
+      hl.sh(bashCode.trim)
       pre(out),
+      hl.scala(ammoniteCode.trim)
       pre(ammSample(ammoniteCode))
     )
   }
