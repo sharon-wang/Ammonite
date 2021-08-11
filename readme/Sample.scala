@@ -48,7 +48,7 @@ object Sample{
       args = Map("JAVA_OPTS" -> "-Xmx600m")
     )
 
-    val lines = Predef.augmentString(out).lines.toSeq.drop(4).dropRight(2).mkString("\n")
+    val lines = Predef.augmentString(out).lines.toSeq.mkString("\n")
     val rawHtmlString = ANSI.ansiToHtml(lines).render.replaceAll("\r\n|\n\r", "\n")
     raw(rawHtmlString)
   }
