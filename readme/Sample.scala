@@ -92,9 +92,9 @@ object Sample{
     }
 
     div(
-      pre(bashCode.trim)
+      pre(bashCode.trim),
       pre(out),
-      pre(ammoniteCode.trim)
+      pre(ammoniteCode.trim),
       pre(ammSample(ammoniteCode))
     )
   }
