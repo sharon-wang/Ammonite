@@ -50,6 +50,9 @@ object Sample{
 
     val lines = Predef.augmentString(out).lines.toSeq.mkString("\n")
     val rawHtmlString = ANSI.ansiToHtml(lines).render.replaceAll("\r\n|\n\r", "\n")
+    println("++++++++++ammSample OUTPUT+++++++++++")
+    println(rawHtmlString)
+    println("+++++++++++++++++++++++++++++++++++")
     raw(rawHtmlString)
   }
 
@@ -90,6 +93,16 @@ object Sample{
         Seq[Frag](span(color := ANSI.magenta, "\nbash$ "), chunk)
       }
     }
+
+    println("++++++++++COMPARE OUTPUT+++++++++++")
+    val compareDiv = div(
+      pre(bashCode.trim),
+      pre(out),
+      pre(ammoniteCode.trim),
+      pre(ammSample(ammoniteCode))
+    )
+    println(compareDiv)
+    println("+++++++++++++++++++++++++++++++++++")
 
     div(
       pre(bashCode.trim),
