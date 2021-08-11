@@ -92,9 +92,9 @@ object Sample{
     }
 
     div(
-      hl.sh(bashCode.trim)
+      pre(bashCode.trim)
       pre(out),
-      hl.scala(ammoniteCode.trim)
+      pre(ammoniteCode.trim)
       pre(ammSample(ammoniteCode))
     )
   }
