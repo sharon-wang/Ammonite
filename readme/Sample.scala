@@ -48,7 +48,7 @@ object Sample{
       args = Map("JAVA_OPTS" -> "-Xmx600m")
     )
 
-    val lines = Predef.augmentString(out).lines.toSeq.mkString("\n")
+    val lines = Predef.augmentString(out).lines.toSeq.drop(1).dropRight(1).mkString("\n")
     val rawHtmlString = ANSI.ansiToHtml(lines).render.replaceAll("\r\n|\n\r", "\n")
     println("++++++++++ammSample OUTPUT+++++++++++")
     println(rawHtmlString)
@@ -94,16 +94,17 @@ object Sample{
       }
     }
 
-    println("++++++++++COMPARE OUTPUT+++++++++++")
-    val compareDiv = div(
-      pre(bashCode.trim),
-      pre(out),
-      pre(ammoniteCode.trim),
-      pre(ammSample(ammoniteCode))
-    )
-    println(compareDiv)
-    println("+++++++++++++++++++++++++++++++++++")
+    // println("~~~~~~~~~~COMPARE OUTPUT~~~~~~~~~~~")
+    // val compareDiv = div(
+    //   pre(bashCode.trim),
+    //   pre(out),
+    //   pre(ammoniteCode.trim),
+    //   pre(ammSample(ammoniteCode))
+    // )
+    // println(compareDiv)
+    // println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 
+    // compareDiv
     div(
       pre(bashCode.trim),
       pre(out),
