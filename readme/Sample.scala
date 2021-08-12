@@ -20,7 +20,7 @@ object Sample{
   val cygwinSed = """$ sed -i '0,/"\$0"/{s/"\$0"/`cygpath -w "\$0"`/}' /usr/local/bin/amm"""
   val filesystemCurl =
     "$ mkdir -p ~/.ammonite && curl -L -o ~/.ammonite/predef.sc https://git.io/vHaKQ"
-  
+
   val cacheVersion = 6
   def cached(key: Any)(calc: => String) = {
     val path = cwd/'target/'cache/(key.hashCode + cacheVersion).toString
@@ -71,7 +71,7 @@ object Sample{
           .call(cwd = os.pwd, env = args, stdin = input)
       val resultString = p.out.string
 
-      println(s"====================RESULT====================")
+      println("====================RESULT====================")
       println(resultString)
       println("==============================================")
       resultString
@@ -100,8 +100,7 @@ object Sample{
       pre(ammoniteCode.trim),
       pre(ammSample(ammoniteCode))
     )
-    compareDiv.map(_.split('\n'))
-      .foreach(r => println(r))
+    s"$compareDiv".split("\\n").foreach(r => println(r))
     println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 
     compareDiv
