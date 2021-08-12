@@ -52,9 +52,6 @@ object Sample{
     // dropRight(3) to remove "\nexit\n"
     val lines = Predef.augmentString(out).lines.toSeq.drop(1).dropRight(3).mkString("\n")
     val rawHtmlString = ANSI.ansiToHtml(lines).render.replaceAll("\r\n|\n\r", "\n")
-    println("++++++++++ammSample OUTPUT+++++++++++")
-    println(rawHtmlString)
-    println("+++++++++++++++++++++++++++++++++++")
     raw(rawHtmlString)
   }
 
@@ -65,9 +62,9 @@ object Sample{
            args: Map[String, String] = Map.empty): String = cached(("exec", command, input, args)){
 
     println("====================EXECUTING====================")
-    println("command: " + command)
-    println("input: " + input)
-    println("args:" + args)
+    println(command)
+    println(input)
+    println(args)
 
     try {
       val p = os.proc(command)
@@ -76,7 +73,7 @@ object Sample{
 
       println(s"====================RESULT====================")
       println(resultString)
-      println("========================================")
+      println("==============================================")
       resultString
     } catch {
       case e: os.SubprocessException =>
