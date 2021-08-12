@@ -88,7 +88,7 @@ object Sample{
       s"PS1=$customPrompt\n${bashCode.trim}\nexit\n"
     )
 
-    val bashCodeFormatted = Seq[Frag](span(color := ANSI.magenta, "bash$ "), bashCode.trim, "\n")
+    val bashCodeFormatted = Seq[Frag](span(color := ANSI.magenta, "bash$ "), bashCode.trim)
     val lines = Predef.augmentString(out).lines.toSeq.mkString("\n")
 
     val compareDiv = div(
