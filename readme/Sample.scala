@@ -50,7 +50,7 @@ object Sample{
 
     // drop(1) to remove "Welcome to the Ammonite Repl..."
     // dropRight(3) to remove "\nexit\n"
-    val lines = Predef.augmentString(out).lines.toSeq.drop(1).dropRight(3).mkString("\n")
+    val lines = Predef.augmentString(out).lines.toSeq.drop(1).dropRight(3).mkString()
     val rawHtmlString = ANSI.ansiToHtml(lines).render.replaceAll("\r\n|\n\r", "\n")
     raw(rawHtmlString)
   }
@@ -91,11 +91,12 @@ object Sample{
     }
 
     val bashCodeFormatted = Seq[Frag](span(color := ANSI.magenta, "bash$ "), bashCode.trim)
+    val lines = Predef.augmentString(out).lines.toSeq.mkString()
 
     println("~~~~~~~~~~COMPARE OUTPUT~~~~~~~~~~~")
     val compareDiv = div(
       pre(bashCodeFormatted),
-      pre(out),
+      pre(lines),
       pre(ammSample(ammoniteCode))
     )
     s"$compareDiv".split("\\n").foreach(r => println(r))
