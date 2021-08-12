@@ -89,14 +89,14 @@ object Sample{
     )
 
     val bashCodeFormatted = Seq[Frag](span(color := ANSI.magenta, "bash$ "), bashCode.trim)
-    val lines = Predef.augmentString(out).lines.toSeq.mkString("")
+    val lines = Predef.augmentString(out).lines.toSeq.mkString("\n")
 
-    println("~~~~~~~~~~COMPARE OUTPUT~~~~~~~~~~~")
     val compareDiv = div(
       pre(bashCodeFormatted),
       pre(lines),
       pre(ammSample(ammoniteCode))
     )
+    println("~~~~~~~~~~COMPARE OUTPUT~~~~~~~~~~~")
     s"$compareDiv".split("\\n").foreach(r => println(r))
     println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 
