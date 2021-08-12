@@ -82,13 +82,11 @@ object Sample{
   }
 
   def compare(bashCode: String, ammoniteCode: String) = {
-    val out = {
-      val customPrompt = "__bash__"
-      val output = exec(
-        Seq("bash", "-i"),
-        s"PS1=$customPrompt\n${bashCode.trim}\nexit\n"
-      )
-    }
+    val customPrompt = "__bash__"
+    val out = exec(
+      Seq("bash", "-i"),
+      s"PS1=$customPrompt\n${bashCode.trim}\nexit\n"
+    )
 
     val bashCodeFormatted = Seq[Frag](span(color := ANSI.magenta, "bash$ "), bashCode.trim)
     val lines = Predef.augmentString(out).lines.toSeq.mkString("")
