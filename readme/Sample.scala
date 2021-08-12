@@ -48,7 +48,9 @@ object Sample{
       args = Map("JAVA_OPTS" -> "-Xmx600m")
     )
 
-    val lines = Predef.augmentString(out).lines.toSeq.drop(1).dropRight(1).mkString("\n")
+    // drop(1) to remove "Welcome to the Ammonite Repl..."
+    // dropRight(3) to remove "\nexit\n"
+    val lines = Predef.augmentString(out).lines.toSeq.drop(1).dropRight(3).mkString("\n")
     val rawHtmlString = ANSI.ansiToHtml(lines).render.replaceAll("\r\n|\n\r", "\n")
     println("++++++++++ammSample OUTPUT+++++++++++")
     println(rawHtmlString)
