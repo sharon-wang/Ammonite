@@ -93,22 +93,17 @@ object Sample{
       }
     }
 
-    // println("~~~~~~~~~~COMPARE OUTPUT~~~~~~~~~~~")
-    // val compareDiv = div(
-    //   pre(bashCode.trim),
-    //   pre(out),
-    //   pre(ammoniteCode.trim),
-    //   pre(ammSample(ammoniteCode))
-    // )
-    // println(compareDiv)
-    // println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-
-    // compareDiv
-    div(
+    println("~~~~~~~~~~COMPARE OUTPUT~~~~~~~~~~~")
+    val compareDiv = div(
       pre(bashCode.trim),
       pre(out),
       pre(ammoniteCode.trim),
       pre(ammSample(ammoniteCode))
     )
+    compareDiv.map(_.split('\n'))
+      .foreach(r => println(r))
+    println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+
+    compareDiv
   }
 }
