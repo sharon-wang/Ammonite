@@ -90,9 +90,11 @@ object Sample{
       )
     }
 
+    val bashCodeFormatted = Seq[Frag](span(color := ANSI.magenta, "bash$ "), bashCode.trim)
+
     println("~~~~~~~~~~COMPARE OUTPUT~~~~~~~~~~~")
     val compareDiv = div(
-      pre(span(color := ANSI.magenta, "bash$ ") + bashCode.trim),
+      pre(bashCodeFormatted)
       pre(out),
       pre(ammSample(ammoniteCode))
     )
