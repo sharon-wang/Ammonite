@@ -88,16 +88,12 @@ object Sample{
         Seq("bash", "-i"),
         s"PS1=$customPrompt\n${bashCode.trim}\nexit\n"
       )
-      for (chunk <- output.split("\n")) yield{
-        Seq[Frag](span(color := ANSI.magenta, "\nbash$ "), chunk)
-      }
     }
 
     println("~~~~~~~~~~COMPARE OUTPUT~~~~~~~~~~~")
     val compareDiv = div(
-      pre(bashCode.trim),
+      pre(span(color := ANSI.magenta, "bash$ ") + bashCode.trim),
       pre(out),
-      pre(ammoniteCode.trim),
       pre(ammSample(ammoniteCode))
     )
     s"$compareDiv".split("\\n").foreach(r => println(r))
