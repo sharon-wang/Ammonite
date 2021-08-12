@@ -94,7 +94,7 @@ object Sample{
 
     println("~~~~~~~~~~COMPARE OUTPUT~~~~~~~~~~~")
     val compareDiv = div(
-      pre(bashCodeFormatted)
+      pre(bashCodeFormatted),
       pre(out),
       pre(ammSample(ammoniteCode))
     )
