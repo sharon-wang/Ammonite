@@ -91,9 +91,14 @@ object Sample{
       }
     }
 
-    div(
+    val compareDiv = div(
       pre(out),
       pre(ammSample(ammoniteCode))
     )
+    println("~~~~~~~~~~COMPARE OUTPUT~~~~~~~~~~~")
+    s"$compareDiv".split("\\n").foreach(r => println(r))
+    println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+
+    compareDiv
   }
 }
