@@ -87,8 +87,12 @@ object Sample{
       Seq("bash", "-i"),
       s"PS1=$customPrompt\n${bashCode.trim}\nexit\n"
     )
+    
+    val bashCodeFormatted =
+      for (bashCodeLine <- bashCode.split("\n")) yield{
+        Seq[Frag](span(color := ANSI.magenta, "bash$ "), bashCodeLine.trim)
+      }
 
-    val bashCodeFormatted = Seq[Frag](span(color := ANSI.magenta, "bash$ "), bashCode.trim)
     val bashOutput = Predef.augmentString(out).lines.toSeq.mkString("\n")
 
     div(
