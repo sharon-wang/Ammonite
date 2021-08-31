@@ -94,11 +94,16 @@ object Sample{
       }
 
     val bashOutput = Predef.augmentString(out).lines.toSeq.mkString("\n")
-
-    div(
+    
+    val compareDiv = div(
       pre(bashCodeFormatted),
       pre(bashOutput),
       pre(ammSample(ammoniteCode))
     )
+    println("~~~~~~~~~~COMPARE OUTPUT~~~~~~~~~~~")
+    s"$compareDiv".split("\\n").foreach(r => println(r))
+    println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+
+    compareDiv
   }
 }
